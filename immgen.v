@@ -5,17 +5,17 @@ module ImmGen (
 );
     always @(*) begin
         case (imm_sel)
-            3'b000: // I-Type
+            3'b000:
                 imm = {{20{inst[31]}}, inst[31:20]};
-            3'b001: // S-Type
+            3'b001:
                 imm = {{20{inst[31]}}, inst[31:25], inst[11:7]};
-            3'b010: // B-Type (Branch)
+            3'b010:
                 imm = {{20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0};
-            3'b011: // U-Type (LUI, AUIPC)
+            3'b011:
                 imm = {inst[31:12], 12'b0};
-            3'b100: // J-Type (JAL)
+            3'b100:
                 imm = {{12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0};
-            default: 
+            default:
                 imm = 32'b0;
         endcase
     end

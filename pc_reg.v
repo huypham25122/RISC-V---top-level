@@ -5,9 +5,9 @@ module PC_Reg (
     output reg [31:0] q
 );
     always @(posedge clk or posedge rst) begin
-        if (rst) 
-            q <= 32'h00000000; // Reset PC về địa chỉ bắt đầu
-        else     
-            q <= d;            // Cập nhật PC mới
+        if (rst)
+            q <= 32'h00000000;
+        else
+            q <= d;
     end
 endmodule
